@@ -1,0 +1,322 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+/*----------------
+Author       : Subrina Sultana
+Template Name: React App
+Version      : 1.0
+*----------------/
+/*---------------
+Table of contents:
+---------------*/
+/*--------------------------------------------------------------------
+Global
+---------------------------------------------------------------------*/
+$blue-color: #089bab;
+$text-color: #212529;
+$gradient-color: linear-gradient(
+  to right,
+  rgba(8, 155, 171, 1) 0%,
+  rgba(13, 181, 200, 1) 100%
+);
+$scrollbar-color: #089bab;
+@mixin fonts($size, $weight, $color) {
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+}
+@mixin transition {
+  -moz-transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  @include fonts(14px, 400, $text-color);
+  background: #eff7f8;
+  position: relative;
+}
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #eff7f8;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: $scrollbar-color;
+  border-radius: 8px;
+}
+h1 {
+  font-size: 48px;
+}
+h2 {
+  font-size: 36px;
+}
+h3 {
+  font-size: 28px;
+}
+h4 {
+  font-size: 22px;
+}
+h5 {
+  font-size: 18px;
+}
+h6 {
+  font-size: 16px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure {
+  margin: 0;
+}
+small {
+  font-size: 12px;
+}
+a,
+a:hover {
+  color: $blue-color;
+  text-decoration: none;
+}
+i,
+svg {
+  display: inline-block;
+  pointer-events: none;
+}
+img {
+  max-width: 100%;
+}
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+iframe {
+  width: 100%;
+}
+figure {
+  position: relative;
+  img {
+    display: block;
+    width: 100%;
+    @include transition;
+  }
+}
+.btn {
+  font-family: "Poppins", sans-serif;
+  @include transition;
+}
+.btn:focus,
+.navbar-toggler:focus,
+.form-control:focus,
+.form-select:focus,
+.accordion-button:focus {
+  box-shadow: none;
+}
+.card-title {
+  @include fonts(18px, 600, $text-color);
+  margin: 0;
+}
+.pagination {
+  .page-link {
+    color: $gradient-color;
+    @include transition;
+  }
+  .page-link:hover,
+  .page-link.active {
+    color: #fff;
+    background: $gradient-color;
+  }
+}
+/*--------------------------------------------------------------------
+Preloader
+---------------------------------------------------------------------*/
+#preloader {
+  background: #fff;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+}
+.loader-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.loader {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  position: relative;
+  div {
+    background: $gradient-color;
+    width: 6px;
+    height: 20px;
+    border-radius: 5px;
+    transform-origin: 10px 35px;
+    transform: rotate(0deg);
+    position: absolute;
+    left: 45px;
+    top: 15px;
+    animation: loader 0.8s infinite;
+  }
+  div:nth-child(2) {
+    transform: rotate(45deg);
+    animation-delay: 0.1s;
+  }
+  div:nth-child(3) {
+    transform: rotate(90deg);
+    animation-delay: 0.2s;
+  }
+  div:nth-child(4) {
+    transform: rotate(135deg);
+    animation-delay: 0.3s;
+  }
+  div:nth-child(5) {
+    transform: rotate(180deg);
+    animation-delay: 0.4s;
+  }
+  div:nth-child(6) {
+    transform: rotate(225deg);
+    animation-delay: 0.5s;
+  }
+  div:nth-child(7) {
+    transform: rotate(270deg);
+    animation-delay: 0.6s;
+  }
+  div:nth-child(8) {
+    transform: rotate(315deg);
+    animation-delay: 0.7s;
+  }
+}
+@keyframes loader {
+  0% {
+    background: transparent;
+    transform-origin: 10px 35px;
+    left: 45px;
+  }
+  30% {
+    background: $gradient-color;
+  }
+  100% {
+    background: transparent;
+    transform-origin: -10px 35px;
+    left: 55px;
+  }
+}
+/*--------------------------------------------------------------------
+Header & Footer
+---------------------------------------------------------------------*/
+.box-card {
+  padding: 16px;
+  margin: 20px 0;
+  background: #fff;
+  border-radius: 25px;
+  box-shadow: 0px 0px 25px 0px rgba(45, 69, 95, 0.1);
+}
+.header,
+.footer {
+  text-align: center;
+  text-transform: capitalize;
+  h1 {
+    @include fonts(30px, 600, $blue-color);
+    letter-spacing: 1px;
+    word-spacing: 5px;
+    text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
+      0px -4px 10px rgba(255, 255, 255, 0.3);
+  }
+}
+footer {
+  p {
+    span {
+      color: $blue-color;
+    }
+  }
+}
+/*--------------------------------------------------------------------
+Table
+---------------------------------------------------------------------*/
+.table-data {
+  min-height: 100vh;
+  overflow-y: auto;
+}
+.c_table {
+  text-align: center;
+  white-space: nowrap;
+  thead {
+    th {
+      @include fonts(14px, 600, #fff);
+      background-image: url("../images/sort.png");
+      background-color: $blue-color;
+      background-repeat: no-repeat;
+      background-position: center right;
+      padding: 4px 18px 4px 4px;
+      cursor: pointer;
+    }
+  }
+  tbody {
+    td {
+      @include fonts(14px, 400, $text-color);
+      vertical-align: middle;
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+  th,
+  td {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+.book-return {
+  .btn {
+    min-width: 85px;
+  }
+  .btn-primary {
+    border: $blue-color;
+    background: $gradient-color;
+  }
+  .btn-primary:hover {
+    background: linear-gradient(
+      to left,
+      rgba(8, 155, 171, 1) 0%,
+      rgba(13, 181, 200, 1) 100%
+    );
+  }
+}
+.modal {
+  display: block;
+  .modal-content {
+    box-shadow: 0px 0px 25px 0px rgba(45, 69, 95, 0.1);
+  }
+  .modal-header::before {
+    content: "";
+    width: 100%;
+    height: 8px;
+    background: $gradient-color;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .modal-footer::before {
+    content: "";
+    width: 100%;
+    height: 8px;
+    background: $gradient-color;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+}
